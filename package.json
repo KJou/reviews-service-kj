@@ -7,9 +7,16 @@
     "node": ">=6.13.0"
   },
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "^5.4.10"
+  },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git"
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
   },
   "version": "1.0.0",
   "main": "index.js",
