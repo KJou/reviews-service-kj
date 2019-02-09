@@ -6,8 +6,11 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "seedDB": "node ./database/seedData.js"
+  },
   "dependencies": {
+    "faker": "^4.1.0",
     "mongoose": "^5.4.10"
   },
   "devDependencies": {
