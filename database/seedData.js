@@ -1,8 +1,6 @@
-const mongoose = require('mongoose');
 const faker = require('faker');
-
-mongoose.connect('mongodb://localhost/n3rdstorm', () => mongoose.co);
-const db = mongoose.connection;
+const mongoose = require('mongoose');
+const dbConnection = require('./db.js');
 
 const { Schema } = mongoose;
 
@@ -25,8 +23,6 @@ const reviewSchema = new Schema({
 const ReviewSummary = mongoose.model('ReviewSummary', reviewSummarySchema);
 const Review = mongoose.model('Review', reviewSchema);
 
-// shared product data:
-
 const sharedProduct1 = new ReviewSummary({
   productID: 1,
   aggregateRating: 0,
@@ -40,7 +36,6 @@ const sharedProduct2 = new ReviewSummary({
   aggregateFit: '',
   reviews: [], // 2213
 });
-
 
 const prod3Review1 = new Review({
   rating: 5,
@@ -58,7 +53,6 @@ const sharedProduct3 = new ReviewSummary({
   reviews: [prod3Review1], // 1
 });
 
-
 const sharedProduct4 = new ReviewSummary({
   productID: 4,
   aggregateRating: 5,
@@ -73,7 +67,7 @@ const sharedProduct5 = new ReviewSummary({
   reviews: [], // 2
 });
 
-const savePromises = [
+const Promises = [
   sharedProduct1.save(),
   sharedProduct2.save(),
   sharedProduct3.save(),
@@ -81,7 +75,7 @@ const savePromises = [
   sharedProduct5.save(),
 ];
 
-db.dropDatabase()
-  .then(() => Promise.all(savePromises))
+dbConnection.db.dropDatabase()
+  .then(() => Promise.all(Promises))
   .then(() => mongoose.disconnect())
   .catch(err => console.log(err));
