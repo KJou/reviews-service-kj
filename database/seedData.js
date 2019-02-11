@@ -1,14 +1,8 @@
 const mongoose = require('mongoose');
+const faker = require('faker');
 
-mongoose.connect('mongodb://localhost/n3rdstorm', (err, db) => {
-  if (err) {
-    console.error(err);
-  }
-  db.dropDatabase();
-  db.close();
-});
-
-mongoose.connect('mongodb://localhost/n3rdstorm');
+mongoose.connect('mongodb://localhost/n3rdstorm', () => mongoose.co);
+const db = mongoose.connection;
 
 const { Schema } = mongoose;
 
@@ -50,7 +44,7 @@ const sharedProduct2 = new ReviewSummary({
 
 const prod3Review1 = new Review({
   rating: 5,
-  dateCreated: null,
+  dateCreated: faker.date.past(),
   fit: 'Runs small',
   headline: 'These boots are siiiick',
   body: 'My boyfriend bought me these boots for our 2-month anniversary. He is the BEST! These BOOTS are the BEST!',
@@ -79,18 +73,15 @@ const sharedProduct5 = new ReviewSummary({
   reviews: [], // 2
 });
 
-sharedProduct1.save((err) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log('successfully saved product 1');
-});
+const savePromises = [
+  sharedProduct1.save(),
+  sharedProduct2.save(),
+  sharedProduct3.save(),
+  sharedProduct4.save(),
+  sharedProduct5.save(),
+];
 
-sharedProduct3.save((err) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log('successfully saved product 3');
-});
+db.dropDatabase()
+  .then(() => Promise.all(savePromises))
+  .then(() => mongoose.disconnect())
+  .catch(err => console.log(err));
