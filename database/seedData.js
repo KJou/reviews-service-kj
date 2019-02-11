@@ -75,7 +75,11 @@ const Promises = [
   sharedProduct5.save(),
 ];
 
-dbConnection.db.dropDatabase()
-  .then(() => Promise.all(Promises))
-  .then(() => mongoose.disconnect())
-  .catch(err => console.log(err));
+const clearThenSeedDb = () => {
+  dbConnection.db.dropDatabase()
+    .then(() => Promise.all(Promises))
+    .then(() => mongoose.disconnect())
+    .catch(err => console.log(err));
+};
+
+clearThenSeedDb();
