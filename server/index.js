@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const router = require('./routes.js')
+const router = require('./routes.js');
 
 const app = express();
 const port = 3003;

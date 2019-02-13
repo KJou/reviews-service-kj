@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const reviewSummarySchema = new Schema({
-  productID: { type: Number, unique: true },
+  productId: { type: Number, unique: true },
   aggregateRating: Number,
   aggregateFit: String,
   reviews: Array,

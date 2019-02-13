@@ -1,23 +1,24 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
-const dbConnection = require('./db.js');
-const schema = require('./schema.js');
+const db = require('./db.js');
+const {Review} = require('./schema.js');
+const {ReviewSummary} = require('./schema.js');
 
-const sharedProduct1 = new schema.ReviewSummary({
-  productID: 1,
+const sharedProduct1 = new ReviewSummary({
+  productId: 1,
   aggregateRating: 0,
   aggregateFit: 'True to size.',
   reviews: [],
 });
 
-const sharedProduct2 = new schema.ReviewSummary({
-  productID: 2,
+const sharedProduct2 = new ReviewSummary({
+  productId: 2,
   aggregateRating: 4.5,
   aggregateFit: '',
   reviews: [], // 2213
 });
 
-const prod3Review1 = new schema.Review({
+const prod3Review1 = new Review({
   rating: 5,
   dateCreated: faker.date.past(),
   fit: 'Runs small',
@@ -26,22 +27,22 @@ const prod3Review1 = new schema.Review({
   username: 'BBYGirlXO',
 });
 
-const sharedProduct3 = new schema.ReviewSummary({
-  productID: 3,
+const sharedProduct3 = new ReviewSummary({
+  productId: 3,
   aggregateRating: 5,
   aggregateFit: 'Runs small; order next size up',
   reviews: [prod3Review1], // 1
 });
 
-const sharedProduct4 = new schema.ReviewSummary({
-  productID: 4,
+const sharedProduct4 = new ReviewSummary({
+  productId: 4,
   aggregateRating: 5,
   aggregateFit: '',
   reviews: [], // 2
 });
 
-const sharedProduct5 = new schema.ReviewSummary({
-  productID: 5,
+const sharedProduct5 = new ReviewSummary({
+  productId: 5,
   aggregateRating: 3.5,
   aggregateFit: '',
   reviews: [], // 2
@@ -56,7 +57,7 @@ const Promises = [
 ];
 
 const clearThenSeedDb = () => {
-  dbConnection.db.dropDatabase()
+  db.dropDatabase()
     .then(() => Promise.all(Promises))
     .then(() => mongoose.disconnect())
     .catch(err => console.log(err));
