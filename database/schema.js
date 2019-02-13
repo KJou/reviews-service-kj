@@ -20,5 +20,5 @@ const reviewSchema = new Schema({
 
 module.exports = {
   ReviewSummary: mongoose.model('ReviewSummary', reviewSummarySchema),
-  Review: mongoose.model('Review', reviewSchema)
-}
+  Review: mongoose.model('Review', reviewSchema),
+};

@@ -1,5 +1,5 @@
 const db = require('../../database/db.js');
-const {ReviewSummary} = require('../../database/schema.js');
+const { ReviewSummary } = require('../../database/schema.js');
 
 // take productId input from req.productId
 // query the db for the reviews
@@ -7,11 +7,11 @@ const {ReviewSummary} = require('../../database/schema.js');
 
 module.exports = {
   get: (productId, callback) => {
-    ReviewSummary.find({productId: productId})
-    .then((result) => {
-      callback(null, result);
+    ReviewSummary.find({ productId })
+      .then((result) => {
+        callback(null, result);
       }, (error) => {
-      callback(error);
-    })
-  }
+        callback(error);
+      });
+  },
 }

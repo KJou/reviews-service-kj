@@ -1,8 +1,8 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
 const db = require('./db.js');
-const {Review} = require('./schema.js');
-const {ReviewSummary} = require('./schema.js');
+const { Review } = require('./schema.js');
+const { ReviewSummary } = require('./schema.js');
 
 const sharedProduct1 = new ReviewSummary({
   productId: 1,
