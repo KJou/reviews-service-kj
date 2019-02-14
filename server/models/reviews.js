@@ -7,7 +7,7 @@ const { ReviewSummary } = require('../../database/schema.js');
 
 module.exports = {
   get: (productId, callback) => {
-    ReviewSummary.find({ productId })
+    ReviewSummary.findOne({ productId })
       .then((result) => {
         callback(null, result);
       }, (error) => {
