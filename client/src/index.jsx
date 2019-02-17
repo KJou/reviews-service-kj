@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       reviewSummary: {},
-      productId: 1,
+      productId: 3,
     };
   }
 
@@ -20,7 +20,6 @@ class App extends React.Component {
   getReviewSummary(productId) {
     axios.get(`http://localhost:3003/${productId}/reviews`)
       .then((result) => {
-        console.log(result.data);
         this.setState({
           reviewSummary: result.data,
         });
@@ -33,7 +32,7 @@ class App extends React.Component {
   render() {
     const { reviewSummary } = this.state;
     return (
-      <div>
+      <div className="App-reviewList">
         <ReviewList reviewSummary={reviewSummary} />
       </div>
     );
