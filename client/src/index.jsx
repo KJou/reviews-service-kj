@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled from 'styled-components';
 import ReviewList from './components/ReviewList.jsx';
+
+const ReviewListWrapper = styled.div`
+font-family: 'Mukta', sans-serif;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -32,9 +37,9 @@ class App extends React.Component {
   render() {
     const { reviewSummary } = this.state;
     return (
-      <div className="App-reviewList">
+      <ReviewListWrapper>
         <ReviewList reviewSummary={reviewSummary} />
-      </div>
+      </ReviewListWrapper>
     );
   }
 }
