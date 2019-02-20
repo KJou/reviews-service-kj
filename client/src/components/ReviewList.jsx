@@ -1,5 +1,6 @@
 import React from 'react';
 import ReviewListEntry from './ReviewListEntry.jsx';
+import ReviewStars from './ReviewStars.jsx';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class ReviewList extends React.Component {
           ReviewList:
           <div className="ReviewList-aggregateRating">
             Stars:
-            { reviewSummary.aggregateRating }
+            <ReviewStars rating={reviewSummary.aggregateRating} starSize={24} />
           </div>
           <div className="ReviewList-numberOfRatings">
             { reviewSummary.reviews.length }
