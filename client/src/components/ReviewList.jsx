@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import ReviewListEntry from './ReviewListEntry.jsx';
 import ReviewStars from './ReviewStars.jsx';
-import { Aggregate } from 'mongoose';
 
 const ReviewSummary = styled.div`
 `;

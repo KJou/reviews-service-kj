@@ -1,13 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors');
 const router = require('./routes.js');
+
 
 const app = express();
 const port = 3003;
 
 app.use(morgan('dev'));
 
+// app.use(cors());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.use('/:productId/reviews', (req, res, next) => {
