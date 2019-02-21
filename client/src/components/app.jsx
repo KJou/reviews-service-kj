@@ -12,9 +12,19 @@ const ReviewListWrapper = styled.div`
 class ReviewsApp extends React.Component {
   constructor(props) {
     super(props);
+
+    let id = 3;
+
+    const pathName = window.location.pathname.split('/');
+
+    const pathId = Number.parseInt(pathName[1], 10);
+    if (!Number.isNaN(pathId)) {
+      id = pathId;
+    }
+
     this.state = {
       reviewSummary: {},
-      productId: 3,
+      productId: id,
     };
   }
 

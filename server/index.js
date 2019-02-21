@@ -13,6 +13,8 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.static(__dirname + '/../client/dist'));
 
+app.use('/:productId', express.static(__dirname + '/../client/dist'));
+
 app.use('/:productId/reviews', (req, res, next) => {
   req.productId = req.params.productId;
   next();
