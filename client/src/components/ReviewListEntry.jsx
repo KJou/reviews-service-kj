@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReviewStars from './ReviewStars.jsx';
 
 const ReviewListEntry = ({ review }) => {
   const ReviewListEntryWrapper = styled.div`
     border-top: 1px solid #e3e3e3;
+    padding: 40px 0px 40px 0px;
   `;
 
   return (
     <ReviewListEntryWrapper>
       <div className="ReviewListEntry-review-left">
-        <div className="ReviewListEntry-review-left-rating">
-          { review.rating }
-        </div>
+        <ReviewStars rating={review.rating} />
         <div className="ReviewListEntry-review-left-headline">
           { review.headline }
         </div>

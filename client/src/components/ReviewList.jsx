@@ -24,22 +24,32 @@ const NumberOfRatings = styled.span`
 const ReviewTopBox = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   padding-bottom: 35px;
   border-bottom: 1px solid #e3e3e3;
+
+  @media all and  (max-width: 750px) {
+    flex-direction: column;
+  }
 `;
 
-const AggregateFit = styled.span`
+const ReviewTopBoxContent = styled.span`
   flex: 1;
+`;
+
+const AggregateRating = styled(ReviewTopBoxContent)`
+`;
+
+const AggregateFit = styled(ReviewTopBoxContent)`
   font-size: 14px;
 `;
 
-const AggregateRating = styled.div`
-  flex: 1;
+const FitHeading = styled.span`
+  font-weight: 700;
+  padding-right: 10px;
 `;
 
-const WriteReview = styled.span`
-  flex: 1;
-  text-align: center;
+const WriteReview = styled(ReviewTopBoxContent)`
 `;
 
 const WriteReviewButton = styled.button`
@@ -50,11 +60,40 @@ const WriteReviewButton = styled.button`
   transition: background .2s,border-color .2s;
   background: #fff;
   border-color: #000;
+  font-size: 12px;
 
   &:hover {
     background: #e3e3e3;
     border-color: #e3e3e3;
   }
+`;
+
+const ReviewsSortMenu = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+`;
+
+const SortByStars = styled.select`
+`;
+
+const StarSortOption = styled.option`
+`;
+
+const StarSortHeading = styled.span`
+  font-weight: 700;
+  font-size: 12px;
+`;
+
+const SelectFilter = styled.select`
+`;
+
+const FilterHeading = styled.option`
+`;
+
+const ReviewsWrapper = styled.div`
+  padding 20px 0px 20px 0px;
 `;
 
 class ReviewList extends React.Component {
@@ -80,20 +119,30 @@ class ReviewList extends React.Component {
               </NumberOfRatings>
             </AggregateRating>
             <AggregateFit>
-              <b>Fit rating: </b>
+              <FitHeading>Fit rating: </FitHeading>
               { reviewSummary.aggregateFit }
             </AggregateFit>
             <WriteReview>
               <WriteReviewButton>Write a Review</WriteReviewButton>
             </WriteReview>
           </ReviewTopBox>
-          {reviewSummary.reviews.map((review) => {
-            return (
-              <div className="ReviewList-reviewListEntry" key={review._id}>
-                <ReviewListEntry review={review} />
-              </div>
-            );
-          })}
+          <ReviewsSortMenu>
+            <SortByStars>
+              <StarSortOption><StarSortHeading>Star Rating</StarSortHeading></StarSortOption>
+            </SortByStars>
+            <SelectFilter>
+              Stars
+            </SelectFilter>
+          </ReviewsSortMenu>
+          <ReviewsWrapper>
+            {reviewSummary.reviews.map((review) => {
+              return (
+                <div className="ReviewList-reviewListEntry" key={review._id}>
+                  <ReviewListEntry review={review} />
+                </div>
+              );
+            })}
+          </ReviewsWrapper>
         </ReviewSummary>
       );
     }
