@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+import ATLAS_SERVER_LOGIN from './config.js';
 
+const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/n3rdstorm');
-mongoose.connect('mongodb+srv://kjou:FZFaznvXZibIXzqM@cluster0-n7jhf.mongodb.net/test?retryWrites=true')
+mongoose.connect(ATLAS_SERVER_LOGIN);
 
 module.exports = mongoose.connection;
