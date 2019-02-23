@@ -1,4 +1,4 @@
-import ATLAS_SERVER_LOGIN from './config.js';
+const ATLAS_SERVER_LOGIN = require('./config.js');
 
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/n3rdstorm');
