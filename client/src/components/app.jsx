@@ -34,7 +34,7 @@ class ReviewsApp extends React.Component {
   }
 
   getReviewSummary(productId) {
-    axios.get(`http://localhost:3003/${productId}/reviews`)
+    axios.get(`/${productId}/reviews`)
       .then((result) => {
         this.setState({
           reviewSummary: result.data,
