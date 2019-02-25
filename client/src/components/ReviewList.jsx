@@ -125,14 +125,14 @@ class ReviewList extends React.Component {
               <WriteReviewButton>Write a Review</WriteReviewButton>
             </WriteReview>
           </ReviewTopBox>
-          <ReviewsSortMenu>
+          {/* <ReviewsSortMenu>
             <SortByStars>
               <StarSortOption><StarSortHeading>Star Rating</StarSortHeading></StarSortOption>
             </SortByStars>
             <SelectFilter>
               Stars
             </SelectFilter>
-          </ReviewsSortMenu>
+          </ReviewsSortMenu> */}
           <ReviewsWrapper>
             {reviewSummary.reviews.map((review) => {
               return (

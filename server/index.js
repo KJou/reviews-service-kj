@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.use('/:productId', express.static(__dirname + '/../client/dist'));
 
-app.use('/:productId/reviews', (req, res, next) => {
+app.use('/reviews/:productId', (req, res, next) => {
   req.productId = req.params.productId;
   next();
 }, router);
